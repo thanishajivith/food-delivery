@@ -1,0 +1,282 @@
+.register-card-container {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-heading {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #14301F;
+  letter-spacing: -0.02em;
+}
+
+.welcome-sub {
+  margin: 0.35rem 0 1.25rem 0;
+  font-size: 0.92rem;
+  color: #56635C;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.two-col-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .two-col-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #14301F;
+}
+
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.required-star {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.optional-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #718096;
+  background-color: #F1F4F2;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.field-error-text {
+  font-size: 0.78rem;
+  color: #DC2626;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+.phone-prefix {
+  font-size: 0.92rem;
+  color: #56635C;
+  font-weight: 500;
+}
+
+/* ─── Compact Outline Form Field (Material overrides) ──────── */
+::ng-deep .register-card-container .mat-mdc-text-field-wrapper {
+  border-radius: 8px !important;
+  background-color: #FFFFFF !important;
+}
+
+::ng-deep .register-card-container .mat-mdc-form-field-infix {
+  min-height: 42px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+::ng-deep .register-card-container .mdc-notched-outline__notch {
+  border-top-style: solid !important;
+}
+
+::ng-deep .register-card-container .mdc-notched-outline__leading,
+::ng-deep .register-card-container .mdc-notched-outline__notch,
+::ng-deep .register-card-container .mdc-notched-outline__trailing {
+  border-color: #D1D5DB !important;
+}
+
+::ng-deep .register-card-container .mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .register-card-container .mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .register-card-container .mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: #1E6B3E !important;
+  border-width: 1.5px !important;
+}
+
+::ng-deep .register-card-container input.mat-mdc-input-element,
+::ng-deep .register-card-container .mat-mdc-select-value {
+  font-size: 0.92rem !important;
+  color: #14301F !important;
+}
+
+::ng-deep .register-card-container input::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Visibility icon button */
+::ng-deep .register-card-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 6px !important;
+  color: #56635C;
+}
+
+::ng-deep .register-card-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix:hover {
+  color: #1E6B3E;
+}
+
+::ng-deep .register-card-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+/* Prevent browser blue autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #14301F !important;
+}
+
+/* Checkbox row */
+.checkbox-row {
+  margin: 0.1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+::ng-deep .checkbox-row .mdc-label {
+  font-size: 0.85rem !important;
+  color: #56635C !important;
+  font-weight: 400 !important;
+}
+
+.terms-link {
+  color: #1E6B3E;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Create Account Button ───────────────────────────────── */
+.btn-register {
+  width: 100% !important;
+  height: 44px !important;
+  background-color: #1E6B3E !important;
+  color: #FFFFFF !important;
+  border-radius: 8px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  border: none !important;
+  transition: background-color 0.2s;
+  margin-top: 0.25rem;
+}
+
+.btn-register:hover:not(:disabled) {
+  background-color: #165330 !important;
+}
+
+.btn-register:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success notification banner */
+.success-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  color: #065F46;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.success-alert mat-icon {
+  color: #059669;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* ─── Divider ─────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0.15rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #E5E7EB;
+}
+
+.divider-text {
+  font-size: 0.82rem;
+  color: #8C9790;
+}
+
+/* ─── Footer / Sign-in link ───────────────────────────────── */
+.signup-footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #56635C;
+  margin-top: 0.25rem;
+}
+
+.signup-footer p {
+  margin: 0;
+}
+
+.signup-link {
+  color: #1E6B3E;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive Adjustments ──────────────────────────────── */
+@media (max-height: 820px) {
+  .welcome-heading {
+    font-size: 1.65rem;
+  }
+
+  .welcome-sub {
+    margin: 0.25rem 0 0.9rem 0;
+    font-size: 0.88rem;
+  }
+
+  .form-container {
+    gap: 0.65rem;
+  }
+}
+

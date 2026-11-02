@@ -1,0 +1,426 @@
+
+
+.login-card-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 5vh;
+}
+
+/* Give the tab group a fixed min-height so card total height
+   stays constant regardless of which tab / form is active. */
+::ng-deep .login-card-container .mat-mdc-tab-group {
+  min-height: 390px;
+}
+
+.welcome-heading {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #14301F;
+  letter-spacing: -0.02em;
+}
+
+.welcome-sub {
+  margin: 0.35rem 0 1.25rem 0;
+  font-size: 0.92rem;
+  color: #56635C;
+}
+
+/* ─── Outer Segmented Tabs: Customer / Partner ────────────── */
+::ng-deep .outer-tabs > .mat-mdc-tab-header {
+  background-color: #F1F4F2;
+  border-radius: 10px;
+  padding: 4px;
+  border-bottom: none !important;
+}
+
+::ng-deep .outer-tabs > .mat-mdc-tab-header .mat-mdc-tab-labels {
+  display: flex;
+  width: 100%;
+}
+
+::ng-deep .outer-tabs > .mat-mdc-tab-header .mdc-tab {
+  height: 38px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #56635C;
+  flex: 1 1 0;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+::ng-deep .outer-tabs > .mat-mdc-tab-header .mdc-tab--active {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+::ng-deep .outer-tabs > .mat-mdc-tab-header .mdc-tab--active .mdc-tab__text-label {
+  color: #14301F !important;
+  font-weight: 600 !important;
+}
+
+::ng-deep .outer-tabs > .mat-mdc-tab-header .mdc-tab-indicator {
+  display: none !important;
+}
+
+/* ─── Fix: Angular Material tab body scrollbar ─────────────── */
+::ng-deep .mat-mdc-tab-body,
+::ng-deep .mat-mdc-tab-body-wrapper,
+::ng-deep .mat-mdc-tab-body-content {
+  overflow: hidden !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* ─── Inner Nested Tabs: Password / OTP ──────────────────────  */
+::ng-deep .nested-tabs > .mat-mdc-tab-header {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  border-bottom: 1px solid #E5E9E7 !important;
+  margin-top: 0.75rem;
+}
+
+::ng-deep .nested-tabs .mdc-tab {
+  height: 36px !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 16px 0 0 !important;
+  min-width: auto !important;
+  margin-right: 8px;
+}
+
+::ng-deep .nested-tabs .mdc-tab .mdc-tab__text-label {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #56635C;
+}
+
+::ng-deep .nested-tabs .mdc-tab--active {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .nested-tabs .mdc-tab--active .mdc-tab__text-label {
+  color: #14301F !important;
+  font-weight: 600 !important;
+}
+
+::ng-deep .nested-tabs .mdc-tab-indicator {
+  display: flex !important;
+}
+
+::ng-deep .nested-tabs .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  border-top-color: #1E6B3E !important;
+  border-top-width: 2px !important;
+  border-radius: 1px 1px 0 0;
+}
+
+/* ─── Form Layout ─────────────────────────────────────────── */
+.tab-content {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.form-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+/* External labels above fields (matching Figma) */
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #14301F;
+}
+
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.forgot-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #1E6B3E;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+/* Phone prefix inside form field */
+.phone-prefix {
+  font-size: 0.92rem;
+  color: #56635C;
+  font-weight: 500;
+}
+
+/* Compact Outline Form Field */
+::ng-deep .form-container .mat-mdc-text-field-wrapper {
+  border-radius: 8px !important;
+  background-color: #FFFFFF !important;
+}
+
+::ng-deep .form-container .mat-mdc-form-field-infix {
+  min-height: 42px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* Remove floating label notch top gap (we use outside labels) */
+::ng-deep .form-container .mdc-notched-outline__notch {
+  border-top-style: solid !important;
+}
+
+::ng-deep .form-container .mdc-notched-outline__leading,
+::ng-deep .form-container .mdc-notched-outline__notch,
+::ng-deep .form-container .mdc-notched-outline__trailing {
+  border-color: #D1D5DB !important;
+}
+
+::ng-deep .form-container .mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .form-container .mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .form-container .mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: #1E6B3E !important;
+  border-width: 1.5px !important;
+}
+
+::ng-deep .form-container input.mat-mdc-input-element {
+  font-size: 0.92rem !important;
+  color: #14301F !important;
+}
+
+::ng-deep .form-container input::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* OTP code input — center + wider letter spacing */
+::ng-deep .form-container .otp-input-code {
+  text-align: center !important;
+  letter-spacing: 0.35em !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #14301F !important;
+}
+
+/* mat-icon-button suffix (visibility toggle) */
+::ng-deep .form-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 6px !important;
+  color: #56635C;
+}
+
+::ng-deep .form-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix:hover {
+  color: #1E6B3E;
+}
+
+::ng-deep .form-container .mat-mdc-icon-button.mat-mdc-form-field-icon-suffix mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+/* Prevent browser blue autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #14301F !important;
+}
+
+/* Checkbox row */
+.checkbox-row {
+  margin: -0.25rem 0 0.1rem 0;
+}
+
+::ng-deep .checkbox-row .mdc-label {
+  font-size: 0.88rem !important;
+  color: #56635C !important;
+  font-weight: 400 !important;
+}
+
+/* OTP specific: resend row */
+.resend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -0.4rem;
+}
+
+.resend-text {
+  font-size: 0.86rem;
+  color: #56635C;
+}
+
+/* Inline text link button (Resend, Change number) */
+.btn-inline-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #1E6B3E;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn-inline-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Sign In / Primary Button ────────────────────────────── */
+.btn-signin {
+  width: 100% !important;
+  height: 44px !important;
+  background-color: #1E6B3E !important;
+  color: #FFFFFF !important;
+  border-radius: 8px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  border: none !important;
+  transition: background-color 0.2s;
+}
+
+.btn-signin:hover {
+  background-color: #165330 !important;
+}
+
+/* ─── Divider ─────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0.15rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #E5E7EB;
+}
+
+.divider-text {
+  font-size: 0.82rem;
+  color: #8C9790;
+}
+
+/* ─── Google / OAuth Button ───────────────────────────────── */
+.btn-google {
+  width: 100% !important;
+  height: 42px !important;
+  border: 1px solid #D1D5DB !important;
+  border-radius: 8px !important;
+  color: #14301F !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background-color: #FFFFFF !important;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-google:hover {
+  background-color: #F9FAFB !important;
+}
+
+.google-icon {
+  flex-shrink: 0;
+}
+
+/* ─── Footer / Sign-up link ───────────────────────────────── */
+.signup-footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #56635C;
+  margin-top: 0.4rem;
+}
+
+.signup-footer p {
+  margin: 0;
+}
+
+.signup-link {
+  color: #1E6B3E;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive: smaller viewport (laptops with toolbars) ── */
+@media (max-height: 820px) {
+  .left {
+    padding: 2.25rem 2.75rem;
+  }
+
+  .logo-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    font-size: 2.05rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .sub-description {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .feature-list {
+    gap: 0.85rem;
+  }
+
+
+  ::ng-deep .login-card-container .mat-mdc-tab-group {
+    min-height: 360px;
+  }
+
+  .welcome-heading {
+    font-size: 1.65rem;
+  }
+
+  .welcome-sub {
+    margin: 0.25rem 0 0.9rem 0;
+    font-size: 0.88rem;
+  }
+
+  .form-container {
+    gap: 0.7rem;
+    margin-top: 0.75rem;
+  }
+}

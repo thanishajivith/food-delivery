@@ -1,0 +1,201 @@
+<div class="register-card-container">
+  <h1 class="welcome-heading">Create account</h1>
+  <p class="welcome-sub">Start ordering or delivering your best food today.</p>
+
+  <form class="form-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Role selection (Default: USER) -->
+    <div class="field-block">
+      <label class="field-label" for="roleSelect">Register as</label>
+      <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+        <mat-select id="roleSelect" formControlName="role">
+          @for (role of roles; track role.value) {
+            <mat-option [value]="role.value">{{ role.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- First Name & Last Name (2 columns) -->
+    <div class="two-col-row">
+      <!-- First Name -->
+      <div class="field-block">
+        <label class="field-label" for="firstNameInput">First Name <span class="required-star">*</span></label>
+        <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+          <input matInput id="firstNameInput" placeholder="John" formControlName="firstName" autocomplete="given-name">
+        </mat-form-field>
+        @if (registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched) {
+          <span class="field-error-text">First name is required</span>
+        }
+      </div>
+
+      <!-- Last Name -->
+      <div class="field-block">
+        <label class="field-label" for="lastNameInput">Last Name <span class="required-star">*</span></label>
+        <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+          <input matInput id="lastNameInput" placeholder="Doe" formControlName="lastName" autocomplete="family-name">
+        </mat-form-field>
+        @if (registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched) {
+          <span class="field-error-text">Last name is required</span>
+        }
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="field-block">
+      <label class="field-label" for="emailInput">Email <span class="required-star">*</span></label>
+      <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+        <input matInput id="emailInput" type="email" placeholder="you@example.com" formControlName="email" autocomplete="email">
+      </mat-form-field>
+      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <span class="field-error-text">
+          @if (registerForm.get('email')?.hasError('required')) {
+            Email is required
+          } @else if (registerForm.get('email')?.hasError('email')) {
+            Please enter a valid email address
+          }
+        </span>
+      }
+    </div>
+
+    <!-- Phone Number -->
+    <div class="field-block">
+      <label class="field-label" for="phoneInput">Phone Number <span class="required-star">*</span></label>
+      <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+        <span matTextPrefix class="phone-prefix">+91&nbsp;</span>
+        <input matInput id="phoneInput" type="tel" placeholder="9876543210" formControlName="phone" maxlength="10" autocomplete="tel">
+      </mat-form-field>
+      @if (registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched) {
+        <span class="field-error-text">
+          @if (registerForm.get('phone')?.hasError('required')) {
+            Phone number is required
+          } @else if (registerForm.get('phone')?.hasError('pattern')) {
+            Please enter a valid 10-digit mobile number
+          }
+        </span>
+      }
+    </div>
+
+    <!-- Address (Optional) -->
+    <div class="field-block">
+      <div class="field-label-row">
+        <label class="field-label" for="addressInput">Address</label>
+        <span class="optional-badge">Optional</span>
+      </div>
+      <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+        <input matInput id="addressInput" placeholder="Street, area or apartment" formControlName="address" autocomplete="street-address">
+      </mat-form-field>
+    </div>
+
+    <!-- Password & Confirm Password (2 columns) -->
+    <div class="two-col-row">
+      <!-- Password -->
+      <div class="field-block">
+        <label class="field-label" for="passwordInput">Password <span class="required-star">*</span></label>
+        <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+          <input 
+            matInput 
+            id="passwordInput" 
+            [type]="hidePassword() ? 'password' : 'text'" 
+            placeholder="••••••••" 
+            formControlName="password" 
+            autocomplete="new-password">
+          <button 
+            matIconButton 
+            matSuffix 
+            type="button" 
+            (click)="hidePassword.update(v => !v)"
+            [attr.aria-label]="hidePassword() ? 'Show password' : 'Hide password'"
+            [attr.aria-pressed]="!hidePassword()">
+            <mat-icon>{{ hidePassword() ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+          <span class="field-error-text">
+            @if (registerForm.get('password')?.hasError('required')) {
+              Password is required
+            } @else if (registerForm.get('password')?.hasError('minlength')) {
+              Min 6 characters
+            }
+          </span>
+        }
+      </div>
+
+      <!-- Confirm Password (Form only; don't store) -->
+      <div class="field-block">
+        <label class="field-label" for="confirmPasswordInput">Confirm Password <span class="required-star">*</span></label>
+        <mat-form-field appearance="outline" class="full-width-field" subscriptSizing="dynamic">
+          <input 
+            matInput 
+            id="confirmPasswordInput" 
+            [type]="hideConfirmPassword() ? 'password' : 'text'" 
+            placeholder="••••••••" 
+            formControlName="confirmPassword" 
+            autocomplete="new-password">
+          <button 
+            matIconButton 
+            matSuffix 
+            type="button" 
+            (click)="hideConfirmPassword.update(v => !v)"
+            [attr.aria-label]="hideConfirmPassword() ? 'Show password' : 'Hide password'"
+            [attr.aria-pressed]="!hideConfirmPassword()">
+            <mat-icon>{{ hideConfirmPassword() ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        @if (registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched) {
+          <span class="field-error-text">
+            @if (registerForm.get('confirmPassword')?.hasError('required')) {
+              Confirm is required
+            } @else if (registerForm.get('confirmPassword')?.hasError('passwordMismatch')) {
+              Passwords do not match
+            }
+          </span>
+        }
+      </div>
+    </div>
+
+    <!-- Terms Checkbox -->
+    <div class="checkbox-row">
+      <mat-checkbox color="primary" formControlName="agreeTerms">
+        I agree to the <a href="javascript:void(0)" class="terms-link">Terms and Conditions</a> and <a href="javascript:void(0)" class="terms-link">Privacy Policy</a>
+      </mat-checkbox>
+      @if (registerForm.get('agreeTerms')?.invalid && registerForm.get('agreeTerms')?.touched) {
+        <span class="field-error-text">Please accept terms to continue</span>
+      }
+    </div>
+
+    <!-- Register Button -->
+    <button matButton="filled" type="submit" class="btn-register" [disabled]="isSubmitting()">
+      @if (isSubmitting()) {
+        <span>Creating account...</span>
+      } @else {
+        <span>Create account</span>
+      }
+    </button>
+
+    @if (successMessage()) {
+      <div class="success-alert">
+        <mat-icon>check_circle</mat-icon>
+        <span>{{ successMessage() }}</span>
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <div class="success-alert" style="color:#c62828">
+        <mat-icon>error</mat-icon>
+        <span>{{ errorMessage() }}</span>
+      </div>
+    }
+
+    <!-- Divider with 'or' -->
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-text">or</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- Sign in Footer -->
+    <div class="signup-footer">
+      <p>Already have an account? <a routerLink="/login" class="signup-link">Sign in</a></p>
+    </div>
+  </form>
+</div>
